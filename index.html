@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>123Movies - Watch Free Movies Online | 123MoviesFree</title>
+<link rel="icon" type="image/png" href="fav.jpeg">
+
+    <meta name="description" content="123Movies is a free streaming site that allows users to watch movies and television series directly through their browser. It does not require users to create an account. Watch HD movies on 123moviesfree.">
+    <meta name="keywords" content="123movies, 123moviesfree, 123 movies free, watch movies online, free streaming, hd movies">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <link rel="canonical" href="https://123moviesfree.vercel.app/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://123moviesfree.vercel.app/">
+    <meta property="og:title" content="123Movies - Watch Free Movies Online">
+    <meta property="og:description" content="123Movies is a free streaming site that allows users to watch movies and television series directly through their browser without registration.">
+    <meta property="og:image" content="https://123moviesfree.vercel.app/og-image.jpg"> <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://123moviesfree.vercel.app/">
+    <meta property="twitter:title" content="123Movies - Watch Free Movies Online">
+    <meta property="twitter:description" content="Stream movies and TV series for free on 123Movies. No registration required.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- RESET & BASIC SETUP --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        :root {
+            --primary-green: #7aaa3e; /* The specific lime green from the screenshot */
+            --primary-green-hover: #6a9534;
+            --bg-light: #e6e6e6; /* Light grey background for the body */
+            --bg-dark: #1a1a1a; /* Dark footer background */
+            --text-dark: #333333;
+            --text-grey: #666666;
+            --footer-text: #cccccc;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER / NAVBAR --- */
+        header {
+            background-color: var(--white);
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #444;
+            display: flex;
+            align-items: center;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .logo .play-icon {
+            color: var(--primary-green);
+            font-size: 0.9em; /* Slightly smaller to fit text height */
+            margin: 0 1px;
+        }
+
+        .tagline {
+            font-size: 10px;
+            color: #777;
+            margin-top: 2px;
+            margin-left: 2px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 6px 10px;
+            cursor: pointer;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Mobile Menu Dropdown (Hidden by default) */
+        .mobile-menu {
+            display: none;
+            background: #fff;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .mobile-menu a {
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 20px 15px;
+            max-width: 800px; /* Constrain width on desktop */
+            margin: 0 auto;
+        }
+
+        /* Large Logo in Hero */
+        .hero-logo {
+            text-align: center;
+            margin-bottom: 25px;
+            margin-top: 10px;
+        }
+        .hero-logo .logo {
+            justify-content: center;
+            font-size: 48px; 
+            color: #555;
+        }
+        .hero-logo .tagline {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            margin-bottom: 25px;
+            background: #fff;
+            padding: 5px; /* Creates the white border look if needed */
+        }
+
+        .search-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid transparent; /* No visible border */
+            font-size: 16px;
+            color: #555;
+            outline: none;
+        }
+
+        .search-btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            width: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .search-btn:hover {
+            background-color: var(--primary-green-hover);
+        }
+
+        /* Green Alert Button */
+        .alert-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            border-radius: 3px;
+        }
+        .alert-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Content Text */
+        .content-text h1 {
+            font-size: 18px;
+            color: #222;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .content-text p {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--footer-text);
+            padding: 30px 15px 15px 15px;
+            margin-top: 30px;
+            border-top: 4px solid #333; /* Visual separation line */
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* 3 columns */
+            gap: 15px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-col h3 {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .footer-col li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a {
+            color: #999;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Subscribe Section */
+        .subscribe-section {
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        .subscribe-section h3 {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .subscribe-section p {
+            font-size: 13px;
+            color: #bbb;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .sub-form {
+            display: flex;
+            height: 40px;
+        }
+
+        .sub-input {
+            flex-grow: 1;
+            padding: 0 10px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .sub-btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Footer Logo & Disclaimer */
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: #333; /* Very dark logo */
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        .footer-logo span { color: #333; }
+        .footer-logo .play-icon { color: var(--primary-green); }
+
+        .disclaimer-text {
+            font-size: 12px;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            text-align: left; /* Based on image */
+        }
+        .disclaimer-text h4 {
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .copyright {
+            background-color: #111;
+            margin: 0 -15px -15px -15px; /* Stretch to edges */
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        /* --- RESPONSIVE TWEAKS --- */
+        @media (min-width: 768px) {
+            .hero, .footer-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="#" class="logo">
+                123M<i class="fa-solid fa-circle-play play-icon"></i>VIES
+            </a>
+            <div class="tagline">Watch Your Favorite Movies Online</div>
+        </div>
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Home</a>
+        <a href="#">Featured</a>
+        <a href="#">Movies</a>
+        <a href="#">TV Series</a>
+    </div>
+
+    <main class="hero">
+        
+        <div class="hero-logo">
+            <div class="logo">
+                123M<i class="fa-solid fa-circle-play play-icon"></i>VIES
+            </div>
+            <div class="tagline">Watch Your Favorite Movies Online</div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+
+        <a href="#" class="alert-btn">
+            Use the old 123Movies? Click here
+        </a>
+
+        <div class="content-text">
+            <h1>123Movies - Watch HD Movies Online Free | 123movie | 123 movies</h1>
+            <p>
+123movies links to various movies and series available on web. 123movies is the best site to search and watch embedded movies for free. It offers best quality movies available on internet. 123movies is index of links of movies already available on internet. Really high speed streaming is available. The world is no longer a place where only the rich could afford hi-tech gadgets or probably the Internet.With almost every individual owning a smartphone and having access to high speed Internet, life has become a lot easier. With the introduction of Starlink internet services, people living in remote areas can also access internet. <br><br>
+
+Watching movies and being entertained is something that most people take advantage of especially when not many options are left in the present times. One such platform is 123Movies where you get to watch all your favourite movies under a single roof. All the movies which 123movies links to are already present on internet, 123movies forms as a collective library for movies present on internet. 123movies is one of those few platforms that doesn’t need you to go anywhere else when you want to watch good quality online streaming of movies and TV series. With many genres as like:  <br><br>
+
+Action, Adventure, Animation, Biography, Comedy, Crime, Documentary, Drama, Family, Fantasy, Game show, History, Horror, Musical, Mystery, News, Reality, Romance, Sci-Fi, TV Movie, Thriller, War    <br><br>
+
+There are a lot of sites offering free movie streaming just like 123movies, but they usually have malware and require you to signup, where they ask you to submit credit card information and it is later on misused by them. With 123 movies, things are simpler. There is no need for subscription or to create an account and you can enjoy watching your favourite movies anytime anywhere, as long as you have a laptop/smartphone and the Internet, its smooth and seamless.  <br><br>
+
+Simply choose the movie you intend to watch and get going. Whether you have friends and family over during get-togethers or probably intend to spend a cosy date night with your partner, 123movies can be a great companion. With movies being a great source of entertainment while reducing boredom for at least three hours at a stretch, there is nothing like it. 123movies only intends to link only legal videos on internet. A bucket of popcorn or your munchies to go along and you are set for a great time ahead.        
+
+
+<h1>You save time By using 123movies</h1>
+There are times when online movie websites allow you to download it first and then watch. With 123 Movies, it’s not the same. You do not have to waste time downloading movies as you can watch them seamlessly online. It saves you time as well as doesn’t keep you waiting especially when you are anxious and excited to watch a new movie or TV series. <br><br>
+
+<h1>You save money by using 123movie</h1>
+With online movie streaming through 123 Movies, you save a lot of money. While you enjoy watching movies for free, all you spend on is the Internet which is a necessity that cannot be ignored. 123movies links to movies present on the web and forms a collective library similar to search engines.
+
+<h1>123movies is compatible with all devices and new browsers</h1>
+123 Movies is made compatible to be played on all devices like that of computers, laptops, tablets as well as mobile phones. 123movies doesn't link to 4k videos on internet. That is when it becomes convenient for everyone to watch their favourite movies on devices that they are comfortable with. While 123movies may not be compatible with old browser versions, 123movies works really well with chrome, safari and firefox's latest versions. You never run out of entertainment on 123movies
+
+
+
+</p>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>123movies</h3>
+                <ul>
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">TV-Series</a></li>
+                    <li><a href="#">FAQ's</a></li>
+                    <li><a href="#">DMCA</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Genres</h3>
+                <ul>
+                    <li><a href="#">Crime</a></li>
+                    <li><a href="#">Drama</a></li>
+                    <li><a href="#">Horror</a></li>
+                    <li><a href="#">Thriller</a></li>
+                    <li><a href="#">Fantasy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Country</h3>
+                <ul>
+                    <li><a href="#">United States</a></li>
+                    <li><a href="#">United Kingdom</a></li>
+                    <li><a href="#">Canada</a></li>
+                    <li><a href="#">Netherlands</a></li>
+                    <li><a href="#">Ireland</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="subscribe-section">
+            <h3>Subscribe</h3>
+            <p>Subscribe to the 123Movies mailing list to receive updates on movies, tv-series and news of top movies.</p>
+            <form class="sub-form">
+                <input type="email" class="sub-input" placeholder="Put your email">
+                <button type="button" class="sub-btn">Subscribe</button>
+            </form>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="logo footer-logo">
+                123M<i class="fa-solid fa-circle-play play-icon"></i>VIES
+                <div style="font-size: 12px; font-weight: normal; color: #444; margin-top: 5px;">Watch Your Favorite Movies Online</div>
+            </div>
+
+            <div class="disclaimer-text">
+                <h4>123Movies - Watch Movies Online For Free and Download the latest movies without Registration at 123moviesfree.</h4>
+                <br>
+                <p>Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties.</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            Copyright © 2025 123moviesfree.vercel.app. All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        // Simple Toggle for Mobile Menu
+        function toggleMenu() {
+            var menu = document.getElementById("mobileMenu");
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+            } else {
+                menu.classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>
